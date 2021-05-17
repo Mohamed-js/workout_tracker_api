@@ -1,6 +1,10 @@
 class Api::V1::MovementsController < ApplicationController
     def index
-        @movements = Movement.all
+        @user = User.find(params[:id])
+        @tracked_movements = @user.movements
+        @all_movements = Movement.all
+
+        @movements = @all_movements - @tracked_movements
         render :json => @movements, status: :ok
     end
 

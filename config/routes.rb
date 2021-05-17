@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'users/sign-up', to: "users#create"
       post 'users/sign-in', to: "users#session"
-      get 'movements', to: "movements#index"
+      get 'movements/:id', to: "movements#index"
       get 'user/:id/movements', to: "movements#tracked_movements"
       get 'movements/new/:name/:movement_id', to: "movements#new_tracked_movement"
 
