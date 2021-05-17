@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_16_144739) do
+ActiveRecord::Schema.define(version: 2021_05_17_173509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_144739) do
   create_table "tracked_movements", force: :cascade do |t|
     t.integer "user_id"
     t.integer "movement_id"
-    t.integer "movement_count"
+    t.integer "movement_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
