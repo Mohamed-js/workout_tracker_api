@@ -8,7 +8,12 @@ class Api::V1::UsersController < ApplicationController
 
     def session
         @user = User.where(name: params[:name], password: params[:password])
-        render :json => @user, status: :ok
+        render :json => @user, include: :movements, status: :ok
+    end
+
+    def trial
+        @user = User.where(name: "hammo", password: "123123")
+        render :json => @user, include: :movements, status: :ok
     end
     
 
@@ -17,13 +22,3 @@ class Api::V1::UsersController < ApplicationController
         params.require(:user).permit(:name, :password)
     end
 end
-
-
-# render :json => @users, status: :ok
-
-# fetch('http://127.0.0.1:3000/api/v1/users/all', {method: "post"}).then(res => res.json())
-
-# fetch('http://127.0.0.1:3000/api/v1/users/all', {method: "post", headers: {'Content-Type': 'application/json'}, body: JSON.stringify({q: 1})}).then(res => res.json())
-
-# fetch('http://127.0.0.1:3000/api/v1/users/sign-in', {method: "post", headers: {'Content-Type': 'application/json'},
-#     body: JSON.stringify({name: "hammo", password:"123"})}).then(res => res.json())
