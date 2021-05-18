@@ -24,6 +24,15 @@ class Api::V1::MovementsController < ApplicationController
         render :json => @tracked, :include => :movement, status: :ok
     end
 
+    # TOP SCORE
+    def top_score
+        @user = User.find(params[:id])
+        @top = @user.tracked_movements.where(movement_id: params[:movement_id]).top_score
+        render :json => @top, status: :ok
+    end
+    
+    
+
     # MAKE UNTRACKED = TRACKED
     def new_tracked_movement
         @user = User.where(name: params[:name])

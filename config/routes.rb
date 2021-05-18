@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       # USER RECORDS
       get 'user/:id/records', to: "movements#user_records"
 
+      # USER TOP SCORE
+      get 'user/:id/:movement_id/topscore', to: "movements#top_score"
+
       # USER TRACKED MOVEMENTS
       get 'user/:id/tracked-movements', to: "movements#tracked_movements"
 
