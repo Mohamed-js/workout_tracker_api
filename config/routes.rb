@@ -5,12 +5,18 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'users/sign-up', to: "users#create"
       post 'users/sign-in', to: "users#session"
-      get 'movements/:id', to: "movements#index"
-      get 'user/:id/movements', to: "movements#tracked_movements"
-      get 'movements/new/:name/:movement_id', to: "movements#new_tracked_movement"
       get 'user/records/new/:name/:movement_id/:movement_count', to: "movements#new_record"
+      get 'movements/new/:name/:movement_id', to: "movements#new_tracked_movement"
 
-      get 'trial', to: "users#trial"
+      # USER AVAILABLE MOVEMENTS
+      get 'user/:id/untracked-movements', to: "movements#index"
+
+      # USER RECORDS
+      get 'user/:id/records', to: "movements#user_records"
+
+      # USER TRACKED MOVEMENTS
+      get 'user/:id/tracked-movements', to: "movements#tracked_movements"
+
     end
   end
 end
