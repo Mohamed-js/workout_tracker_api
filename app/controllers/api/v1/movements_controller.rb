@@ -20,7 +20,7 @@ class Api::V1::MovementsController < ApplicationController
     # USER RECORDS
     def user_records
         @user = User.find(params[:id])
-        @tracked = @user.tracked_movements
+        @tracked = @user.tracked_movements.order('created_at DESC')
         render :json => @tracked, :include => :movement, status: :ok
     end
 
