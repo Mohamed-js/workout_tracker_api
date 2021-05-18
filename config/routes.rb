@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'movements/:id', to: "movements#index"
       get 'user/:id/movements', to: "movements#tracked_movements"
       get 'movements/new/:name/:movement_id', to: "movements#new_tracked_movement"
+      get 'user/records/new/:name/:movement_id/:movement_count', to: "movements#new_record"
 
       get 'trial', to: "users#trial"
     end

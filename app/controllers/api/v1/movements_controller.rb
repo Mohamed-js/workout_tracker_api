@@ -21,4 +21,12 @@ class Api::V1::MovementsController < ApplicationController
             render :json => {message: 'Successfully added!'}, status: :ok
         end
     end
+
+    def new_record
+        @user = User.where(name: params[:name])
+        movement = @user[0].tracked_movements.build(movement_id: params[:movement_id], movement_count: params[:movement_count])
+        if movement.save 
+            render :json => {message: 'Successfully added!'}, status: :ok
+        end
+    end
 end
