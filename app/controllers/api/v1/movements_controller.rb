@@ -20,7 +20,6 @@ class Api::V1::MovementsController < ApplicationController
     # USER RECORDS
     def user_records
         @user = User.find(params[:id])
-        @movements = @user.movements.uniq
         @tracked = @user.tracked_movements
         render :json => @tracked, :include => :movement, status: :ok
     end

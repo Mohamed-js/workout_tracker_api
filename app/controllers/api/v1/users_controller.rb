@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
 
     def session
         @user = User.where(name: params[:name], password: params[:password])
-        render :json => @user, include: :movements, status: :ok
+        render :json => @user, status: :ok
     end
 
     def trial
