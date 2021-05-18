@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def session
-        @user = User.where(name: params[:name], password: params[:password], birth_date: params[:birth_date])
+        @user = User.where(name: params[:name], password: params[:password])
         render :json => @user, include: :movements, status: :ok
     end
 
@@ -19,6 +19,6 @@ class Api::V1::UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:name, :password)
+        params.require(:user).permit(:name, :password, :birth_date)
     end
 end
