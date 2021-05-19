@@ -11,9 +11,21 @@ class Api::V1::UsersController < ApplicationController
         render :json => @user, status: :ok
     end
 
-    def trial
-        @user = User.where(name: "hammo", password: "123123")
-        render :json => @user, include: :movements, status: :ok
+    def update_user_profile
+        @user = User.find(params[:user_id])
+        
+        @user.last_weight = @user.current_weight
+        @user.last_right_arm_size = @user.current_right_arm_size
+        @user.last_left_arm_size = @user.current_left_arm_size
+
+        @user.current_weight = params[:weight]
+        @user.height = params[:height]
+        @user.current_right_arm_size = params[:right_arm]
+        @user.current_left_arm_size = params[:left_arm]
+
+        if @user.save
+            render :json => {message: 'Successfully updated!'}
+        end
     end
     
 

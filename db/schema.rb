@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_173509) do
+ActiveRecord::Schema.define(version: 2021_05_19_070329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 2021_05_17_173509) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "current_weight", default: 0
+    t.integer "last_weight", default: 0
+    t.integer "height", default: 0
+    t.integer "current_right_arm_size", default: 0
+    t.integer "last_right_arm_size", default: 0
+    t.integer "current_left_arm_size", default: 0
+    t.integer "last_left_arm_size", default: 0
   end
 
 end

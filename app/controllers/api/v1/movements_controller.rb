@@ -35,8 +35,8 @@ class Api::V1::MovementsController < ApplicationController
 
     # MAKE UNTRACKED = TRACKED
     def new_tracked_movement
-        @user = User.where(name: params[:name])
-        movement = @user[0].tracked_movements.build(movement_id: params[:movement_id], movement_count: 0)
+        @user = User.find(params[:user_id])
+        movement = @user.tracked_movements.build(movement_id: params[:movement_id], movement_count: 0)
         if movement.save 
             render :json => {message: 'Successfully added!'}, status: :ok
         end
@@ -44,8 +44,8 @@ class Api::V1::MovementsController < ApplicationController
 
     # ADD NEW RECORD
     def new_record
-        @user = User.where(name: params[:name])
-        movement = @user[0].tracked_movements.build(movement_id: params[:movement_id], movement_count: params[:movement_count])
+        @user = User.find(params[:user_id])
+        movement = @user.tracked_movements.build(movement_id: params[:movement_id], movement_count: params[:movement_count])
         if movement.save 
             render :json => {message: 'Successfully added!'}, status: :ok
         end
