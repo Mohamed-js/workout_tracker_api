@@ -26,7 +26,6 @@ Rails.application.routes.draw do
 
       # USER TRACKED MOVEMENTS #
       get 'user/:id/tracked-movements', to: "movements#tracked_movements"
-
     end
   end
 end

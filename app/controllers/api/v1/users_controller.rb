@@ -3,6 +3,8 @@ class Api::V1::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             render :json => {message: 'Successfully signed up!'}, status: :ok
+        else
+            render :json => { :errors => @user.errors.full_messages }
         end
     end
 
@@ -15,16 +17,14 @@ class Api::V1::UsersController < ApplicationController
         @user = User.find(params[:user_id])
         
         @user.last_weight = @user.current_weight
-        @user.last_right_arm_size = @user.current_right_arm_size
-        @user.last_left_arm_size = @user.current_left_arm_size
 
         @user.current_weight = params[:weight]
         @user.height = params[:height]
-        @user.current_right_arm_size = params[:right_arm]
-        @user.current_left_arm_size = params[:left_arm]
 
         if @user.save
             render :json => {message: 'Successfully updated!'}
+        else
+            render :json => { :errors => @user.errors.full_messages }
         end
     end
     
