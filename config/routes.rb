@@ -6,25 +6,25 @@ Rails.application.routes.draw do
       post 'users/sign-up', to: "users#create"
       post 'users/sign-in', to: "users#session"
       
-      # NEW RECORD
-      get 'user/records/new/:user_id/:movement_id/:movement_count', to: "movements#new_record"
+      # NEW RECORD #
+      post 'user/records/new', to: "movements#new_record"
 
-      # SUBSCRIBE TO MOVEMENT
-      get 'movements/new/:user_id/:movement_id', to: "movements#new_tracked_movement"
+      # SUBSCRIBE TO MOVEMENT #
+      post 'movements/new', to: "movements#new_tracked_movement"
 
-      # UPDATE USER PROFILE
-      get 'user/profile/:user_id/:weight/:height/:left_arm/:right_arm', to: "users#update_user_profile"
+      # UPDATE USER PROFILE #
+      post 'user/profile', to: "users#update_user_profile"
 
-      # USER AVAILABLE MOVEMENTS
+      # USER AVAILABLE MOVEMENTS #
       get 'user/:id/untracked-movements', to: "movements#index"
 
-      # USER RECORDS
+      # USER RECORDS #
       get 'user/:id/records', to: "movements#user_records"
 
-      # USER TOP SCORE
+      # USER TOP SCORE #
       get 'user/:id/:movement_id/topscore', to: "movements#top_score"
 
-      # USER TRACKED MOVEMENTS
+      # USER TRACKED MOVEMENTS #
       get 'user/:id/tracked-movements', to: "movements#tracked_movements"
 
     end
