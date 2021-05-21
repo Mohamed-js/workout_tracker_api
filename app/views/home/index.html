@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>WORKOUT API</title>
+  </head>
+
+  <body>
+    <h1 class="text-center p-5 btn-success">Welcome to Workout API</h1>
+    <br /><br />
+    <h2 class="text-center">Get started</h2>
+    <br />
+    <p class="text-center w-75 m-auto">
+      Workout API is an API that helps you manage your workout tracking app. It
+      provides you with user profile management, and authentication. It also
+      provides you with a variety of exercises that the user can subscribe to,
+      and tracks users' records day by day.
+    </p>
+    <br /><br /><br />
+
+    <h2 class="text-center">Endpoints</h2>
+    <br />
+    <br />
+    <br />
+
+    <h3 class="w-75 m-auto">New user:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        POST: http://workout-track-api.herokuapp.com/api/v1/users/sign-up
+      </p>
+      <p class="p-1 m-2">
+        It does accept three parameters::<span
+          class="p-1 m-2 alert alert-warning"
+          >name, password, birth_date
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch( 'http://workout-track-api.herokuapp.com/api/v1/users/sign-up', {
+        <p class="m-0 ml-3">headers: { 'Content-Type': 'application/json' },</p>
+        <p class="m-0 ml-3">method: 'POST',</p>
+        <p class="m-0 ml-3">
+          body: JSON.stringify({name: 'Kola', password: 'xxx', birth_date: 'Some
+          date here.'}), },
+        </p>
+        )
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <h3 class="w-75 m-auto">User login:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        POST: http://workout-track-api.herokuapp.com/api/v1/users/sign-in
+      </p>
+      <p class="p-1 m-2">
+        It does accept two parameters::<span class="p-1 m-2 alert alert-warning"
+          >name, password
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch( 'http://workout-track-api.herokuapp.com/api/v1/users/sign-in', {
+        <p class="m-0 ml-3">headers: { 'Content-Type': 'application/json' },</p>
+        <p class="m-0 ml-3">method: 'POST',</p>
+        <p class="m-0 ml-3">
+          body: JSON.stringify({name: 'Kola', password: 'xxx'}), },
+        </p>
+        )
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <h3 class="w-75 m-auto">User update profile:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        POST: http://workout-track-api.herokuapp.com/api/v1/user/profile
+      </p>
+      <p class="p-1 m-2">
+        It does accept two parameters::<span class="p-1 m-2 alert alert-warning"
+          >weight, height
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch( 'http://workout-track-api.herokuapp.com/api/v1/user/profile', {
+        <p class="m-0 ml-3">headers: { 'Content-Type': 'application/json' },</p>
+        <p class="m-0 ml-3">method: 'POST',</p>
+        <p class="m-0 ml-3">
+          body: JSON.stringify({weight: '75', height: '178'}), },
+        </p>
+        )
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <h3 class="w-75 m-auto">User untracked exercises:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        GET:
+        http://workout-track-api.herokuapp.com/api/v1/user/${:id}/untracked-movements
+      </p>
+      <p class="p-1 m-2">
+        It does accept one parameter::<span class="p-1 m-2 alert alert-warning"
+          >id
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch(
+        'http://workout-track-api.herokuapp.com/api/v1/user/1/untracked-movements')
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <h3 class="w-75 m-auto">User tracked exercises:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        GET:
+        http://workout-track-api.herokuapp.com/api/v1/user/${:id}/tracked-movements
+      </p>
+      <p class="p-1 m-2">
+        It does accept one parameter::<span class="p-1 m-2 alert alert-warning"
+          >id
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch(
+        'http://workout-track-api.herokuapp.com/api/v1/user/1/tracked-movements')
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <h3 class="w-75 m-auto">User records:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        GET: http://workout-track-api.herokuapp.com/api/v1/user/${:id}/records
+      </p>
+      <p class="p-1 m-2">
+        It does accept one parameter::<span class="p-1 m-2 alert alert-warning"
+          >id
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch('http://workout-track-api.herokuapp.com/api/v1/user/1/records')
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <h3 class="w-75 m-auto">User top score in a specific exercise:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        GET:
+        http://workout-track-api.herokuapp.com/api/v1/user/:id/:movement_id/topscore
+      </p>
+      <p class="p-1 m-2">
+        It does accept two parameter::<span class="p-1 m-2 alert alert-warning"
+          >id, movement_id
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch('http://workout-track-api.herokuapp.com/api/v1/user/1/2/topscore')
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <h3 class="w-75 m-auto">Add exercise to user tracked exercises:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        POST: http://workout-track-api.herokuapp.com/api/v1/movements/new
+      </p>
+      <p class="p-1 m-2">
+        It does accept two parameters::<span class="p-1 m-2 alert alert-warning"
+          >user_id, movement_id
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch( 'http://workout-track-api.herokuapp.com/api/v1/movements/new', {
+        <p class="m-0 ml-3">headers: { 'Content-Type': 'application/json' },</p>
+        <p class="m-0 ml-3">method: 'POST',</p>
+        <p class="m-0 ml-3">
+          body: JSON.stringify({user_id: 1, movement_id: 3}), },
+        </p>
+        )
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <h3 class="w-75 m-auto">Add a new record of a movement or exercise:</h3>
+    <div class="w-75 m-auto">
+      <p class="alert alert-success p-1 m-2">
+        POST: http://workout-track-api.herokuapp.com/api/v1/user/records/new
+      </p>
+      <p class="p-1 m-2">
+        It does accept three parameters::<span
+          class="p-1 m-2 alert alert-warning"
+          >user_id, movement_id, movement_count
+        </span>
+      </p>
+      <p>A simple request may appear like:</p>
+      <div class="border rounded p-3">
+        fetch( 'http://workout-track-api.herokuapp.com/api/v1/user/records/new',
+        {
+        <p class="m-0 ml-3">headers: { 'Content-Type': 'application/json' },</p>
+        <p class="m-0 ml-3">method: 'POST',</p>
+        <p class="m-0 ml-3">
+          body: JSON.stringify({user_id: 1, movement_id: 3, movement_count:
+          60}), },
+        </p>
+        )
+      </div>
+    </div>
+    <br /><br /><br /><br />
+  </body>
+</html>

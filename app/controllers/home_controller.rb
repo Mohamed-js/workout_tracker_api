@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
-    def index
-        @movements = Movement.all
-        render :json => @movements, status: :ok
-    end
+  include ActionView::Layouts
+  include ActionController::Rendering
+  def index
+    render :index
+  end
 end
