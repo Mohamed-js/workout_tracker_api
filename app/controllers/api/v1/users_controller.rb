@@ -22,9 +22,9 @@ class Api::V1::UsersController < ApplicationController
         @user.height = params[:height]
 
         if @user.save
-            render :json => {message: 'Successfully updated!'}
+            render :json => { message: 'Successfully updated!' }
         else
-            render :json => { :errors => @user.errors.full_messages }
+            render :json => { message: 'Sorry, cannot update!' }
         end
     end
     
