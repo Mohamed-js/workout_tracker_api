@@ -43,5 +43,4 @@ RSpec.describe User, type: :model do
     user = User.new(name: short_name, password: password)
     expect(user).to_not be_valid
   end
-
 end
