@@ -4,8 +4,6 @@ require 'rails_helper'
 name = 'mohameeed'
 short_name = 'mo'
 password = '123456'
-short_password = '123'
-long_password = '1234567891011122334456778879'
 birth_date = 'somedate'
 
 RSpec.describe User, type: :model do
@@ -26,16 +24,6 @@ RSpec.describe User, type: :model do
 
   it 'is not valid without password' do
     user = User.new(name: name)
-    expect(user).to_not be_valid
-  end
-
-  it 'is not valid with short password' do
-    user = User.new(name: name, password: short_password)
-    expect(user).to_not be_valid
-  end
-
-  it 'is not valid with long password' do
-    user = User.new(name: name, password: long_password)
     expect(user).to_not be_valid
   end
 

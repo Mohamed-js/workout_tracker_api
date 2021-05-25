@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApplicationController
     if @user.save
       render json: { message: 'Successfully signed up!' }, status: :ok
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -22,14 +22,14 @@ class Api::V1::UsersController < ApplicationController
     if @user.save
       render json: { message: 'Successfully updated!' }
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :birth_date)
+    params.permit(:name, :password)
   end
 
   def set_user

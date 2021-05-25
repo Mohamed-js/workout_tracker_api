@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :movements, through: :tracked_movements
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3 }
-  validates :password, presence: true, length: { in: 6..20 }
+  validates :password_digest, presence: true
 end

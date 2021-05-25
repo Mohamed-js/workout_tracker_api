@@ -1,4 +1,4 @@
-class Api::V1::UntrackedMovementsController < ApplicationController
+class Api::V1::RecordsController < ApplicationController
     before_action :set_user
 
     # ALL USER RECORDS

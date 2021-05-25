@@ -1,4 +1,4 @@
-class Api::V1::Movements::TrackedMovementsController < ApplicationController
+class Api::V1::TrackedMovementsController < ApplicationController
     before_action :set_user
 
     # ALL TRACKED MOVEMENTS

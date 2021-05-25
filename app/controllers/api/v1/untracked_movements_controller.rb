@@ -1,4 +1,4 @@
-class Api::V1::Movements::UntrackedMovementsController < ApplicationController
+class Api::V1::UntrackedMovementsController < ApplicationController
     before_action :set_user
 
     # ALL UNTRACKED MOVEMENTS
