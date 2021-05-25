@@ -4,11 +4,10 @@ require 'rails_helper'
 name = 'mohameeed'
 short_name = 'mo'
 password = '123456'
-birth_date = 'somedate'
 
 RSpec.describe User, type: :model do
   it 'is valid with valid attributes' do
-    user = User.new(name: name, password: password, birth_date: birth_date)
+    user = User.new(name: name, password: password)
     expect(user).to be_valid
   end
 
