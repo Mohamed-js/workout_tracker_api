@@ -2,7 +2,7 @@ class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: %i[show update]
 
   def show
-    render json: @user, only: [:name, :height, :current_weight, :last_weight], status: :ok
+    render json: @user, only: %i[name height current_weight last_weight], status: :ok
   end
 
   def create
@@ -35,7 +35,7 @@ class Api::V1::UsersController < ApplicationController
   def set_user
     if request.headers['Authorization'].present?
       @user = User.find_by(authentication_token: request.headers['Authorization'])
-      if !@user
+      unless @user
         render json: {
           token: 'Wrong Token'
         }, status: :unprocessable_entity
