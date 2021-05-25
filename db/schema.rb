@@ -10,34 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_520_221_114) do
+ActiveRecord::Schema.define(version: 2021_05_25_105157) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'movements', force: :cascade do |t|
-    t.string 'name'
-    t.string 'category'
-    t.text 'image'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "movements", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.text "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'tracked_movements', force: :cascade do |t|
-    t.integer 'user_id'
-    t.integer 'movement_id'
-    t.integer 'movement_count', default: 0
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "tracked_movements", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movement_id"
+    t.integer "movement_count", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.date 'birth_date'
-    t.string 'password'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.integer 'current_weight', default: 0
-    t.integer 'last_weight', default: 0
-    t.integer 'height', default: 0
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.date "birth_date"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "current_weight", default: 0
+    t.integer "last_weight", default: 0
+    t.integer "height", default: 0
+    t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   end
+
 end

@@ -1,46 +1,26 @@
 class Api::V1::MovementsController < ApplicationController
-  # UNTRACKED MOVEMENTS
+  before_action :set_user
+
   def index
-    @user = User.find(params[:id])
-    @tracked_movements = @user.movements
-    @all_movements = Movement.all
-
-    @movements = @all_movements - @tracked_movements
-    render json: @movements, status: :ok
+    @movements = Movement.all
+    render json: @movements
   end
+ 
 
-  # TRACKED MOVEMENTS
-  def tracked_movements
-    @user = User.find(params[:id])
-    @movements = @user.movements.uniq
-    render json: @movements, status: :ok
-  end
+  private
 
-  # USER RECORDS
-  def user_records
-    @user = User.find(params[:id])
-    @tracked = @user.tracked_movements.order('created_at DESC')
-    render json: @tracked, include: :movement, status: :ok
-  end
-
-  # TOP SCORE
-  def top_score
-    @user = User.find(params[:id])
-    @top = @user.tracked_movements.where(movement_id: params[:movement_id]).top_score
-    render json: @top, status: :ok
-  end
-
-  # MAKE UNTRACKED = TRACKED
-  def new_tracked_movement
-    @user = User.find(params[:user_id])
-    movement = @user.tracked_movements.build(movement_id: params[:movement_id], movement_count: 0)
-    render json: { message: 'Successfully added!' }, status: :ok if movement.save
-  end
-
-  # ADD NEW RECORD
-  def new_record
-    @user = User.find(params[:user_id])
-    movement = @user.tracked_movements.build(movement_id: params[:movement_id], movement_count: params[:movement_count])
-    render json: { message: 'Successfully added!' }, status: :ok if movement.save
+  def set_user
+    if request.headers['Authorization'].present?
+      @user = User.find_by(authentication_token: request.headers['Authorization'])
+      if !@user
+        render json: {
+          error: 'Not Authorized!'
+        }, status: 401
+      end
+    else
+      render json: {
+        token: 'Missing Token'
+      }, status: :unprocessable_entity
+    end
   end
 end
