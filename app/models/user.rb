@@ -10,6 +10,6 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
 
   def top_score(id)
-    self.tracked_movements.where(movement_id: id).top_score
+    tracked_movements.where(movement_id: id).top_score
   end
 end
