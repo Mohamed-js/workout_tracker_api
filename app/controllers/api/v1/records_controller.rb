@@ -3,7 +3,7 @@ class Api::V1::RecordsController < ApplicationController
 
   # ALL USER RECORDS
   def index
-    @tracked = @user.tracked_movements.order('created_at DESC')
+    @tracked = @user.ordered_tracked_movements
     render json: @tracked, include: :movement, status: :ok
   end
 

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :tracked_movements
+  has_many :ordered_tracked_movements, -> { order('created_at DESC') }, class_name: 'TrackedMovement'
   has_many :movements, through: :tracked_movements
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3 }
