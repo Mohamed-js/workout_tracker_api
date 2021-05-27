@@ -9,7 +9,7 @@ class Api::V1::RecordsController < ApplicationController
 
   # SHOW TOP SCORE
   def show
-    @top = @user.tracked_movements.where(movement_id: params[:id]).top_score
+    @top = @user.top_score(params[:id])
     render json: @top, status: :ok
   end
 

@@ -8,4 +8,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3 }
   validates :password_digest, presence: true
+
+  def top_score(id)
+    self.tracked_movements.where(movement_id: id).top_score
+  end
 end
