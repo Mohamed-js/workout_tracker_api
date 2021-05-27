@@ -31,19 +31,4 @@ class Api::V1::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password)
   end
-
-  def set_user
-    if request.headers['Authorization'].present?
-      @user = User.find_by(authentication_token: request.headers['Authorization'])
-      unless @user
-        render json: {
-          token: 'Wrong Token'
-        }, status: :unprocessable_entity
-      end
-    else
-      render json: {
-        token: 'Missing Token'
-      }, status: :unprocessable_entity
-    end
-  end
 end
