@@ -1,24 +1,70 @@
-# README
+# Workout Track Api - Microverse Final Assessment Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> This project is a workout API made with Ruby on Rails. It is an API that hold information that helps you to track the workout and body status statistics of your application users.
 
-Things you may want to cover:
+[See this example built with React for the front-end](http://workout-track-mob.herokuapp.com/)
 
-* Ruby version
+<div align="center">
 
-* System dependencies
+![screenshot](./screenshot.png)
 
-* Configuration
+</div>
 
-* Database creation
+## Technologies
 
-* Database initialization
+- Ruby
+- Ruby on Rails
+- Rspec
+- PostgreSQL
+- Bootstrap
 
-* How to run the test suite
+## Live
 
-* Services (job queues, cache servers, search engines, etc.)
+[The API documentation](http://workout-track-api.herokuapp.com//)
 
-* Deployment instructions
+## Usage
 
-* ...
+```
+- git clone "https://github.com/Mohamed-js/workout_tracker_api.git"
+- cd workout_tracker_api
+- bundle install
+- rails db:migrate
+- rails db:seed
+- rails s
+```
+
+## Testing
+
+```
+- git clone "https://github.com/Mohamed-js/workout_tracker_api.git"
+- cd workout_tracker_api
+- bundle install
+- rails db:migrate RAILS_ENV=test
+- rspec
+
+```
+
+## Authors
+
+👤 **Mohammed Atef**
+
+- GitHub: [Mohamed Atef](https://github.com/Mohamed-js)
+- Twitter: [@Mohamed Atef](https://twitter.com/Demovejetta)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mohamed-js/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse
+- Notion
+
+## 📝 License
+
+This project is [MIT](https://github.com/Mohamed-js/Capstone-Project-1/blob/dev-area/LICENSE.md) licensed.
